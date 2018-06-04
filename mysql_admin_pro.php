@@ -15,7 +15,7 @@ $base64 = base64_encode($fileContents);
 if($name != null )
 {
         $sql = "insert into products (name, img) values ('$name', '$base64')";
-        if(mysqli_query($con,$sql))
+        if($con->exec($sql))
         {
                 echo '新增成功!';
                 echo '<meta http-equiv=REFRESH CONTENT=1;url=admin_pro.php>';

@@ -10,7 +10,7 @@ $user_id = $_SESSION['user_id'];
 if($client_id != null && $comment != null && $user_id != null)
 {
         $sql = "insert into admins (client_id, user_id, comment) values ('$client_id', '$user_id', '$comment')";
-        if(mysqli_query($con,$sql))
+        if($con->exec($sql))
         {
                 echo '回覆成功!';
                 echo '<meta http-equiv=REFRESH CONTENT=1;url=admin_quo.php>';

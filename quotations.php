@@ -10,11 +10,12 @@ if($_SESSION== null)
 $id=$_SESSION['user_id'];
 $sql = "SELECT * FROM clients where user_id =$id ORDER BY id DESC";
 $sql_ans = "SELECT * FROM admins ORDER BY id DESC";
-$result = mysqli_query($con,$sql);
-$result_ans = mysqli_query($con,$sql_ans);
+$result = $con->query($sql);
+$result_ans = $con->query($sql_ans);
 ?>
 <head>
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"> </script>
 </head>
 <body>
 	<div style="padding: 10px;">
@@ -32,7 +33,6 @@ $result_ans = mysqli_query($con,$sql_ans);
 				if($re['client_id']==$res['id']){
 					echo "<div style='padding: 10px;'>回覆：".$re['comment']."</div>";
 				}
-				echo "<hr>";
 			}
 			echo "<hr>";
 		}

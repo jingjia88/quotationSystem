@@ -12,7 +12,7 @@ $comment = $_POST['comment'];
 if($user_id != null && $product != null && $amount != null)
 {
         $sql = "insert into clients (product, amount, user_id, comment) values ('$product', '$amount', '$user_id', '$comment')";
-        if(mysqli_query($con,$sql))
+        if($con->exec($sql))
         {
                 echo '詢價成功!';
                 echo '<meta http-equiv=REFRESH CONTENT=1;url=quotations.php>';

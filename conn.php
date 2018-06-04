@@ -10,8 +10,8 @@ $password = $_POST['password'];
 
 //搜尋資料庫資料
 $sql = "SELECT * FROM users where email = '$email'";
-$result = mysqli_query($con,$sql);
-$row = mysqli_fetch_array($result);
+$result = $con->query($sql);
+$row = $result->fetch();
 
 //判斷帳號與密碼是否為空白
 //以及MySQL資料庫裡是否有這個會員

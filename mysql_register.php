@@ -12,10 +12,10 @@ $auth = 1;
 if($username != null && $pw != null && $pw2 != null && $pw == $pw2)
 {
         $sql = "insert into users (name, password, email, auth) values ('$username', '$pw', '$email', '$auth')";
-        if(mysqli_query($con,$sql))
+        if($con->exec($sql))
         {
                 echo '新增成功!';
-                echo '<meta http-equiv=REFRESH CONTENT=2;url=view/index.php>';
+                echo '<meta http-equiv=REFRESH CONTENT=2;url=login.php>';
         }
         else
         {

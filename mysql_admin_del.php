@@ -6,7 +6,7 @@ include("mysql_conn.php");
 $product = $_GET['product_id'];
 
 $sql = "delete from products where id=$product";
-if(mysqli_query($con,$sql))
+if($con->exec($sql))
 {
         echo '下架成功!';
         echo '<meta http-equiv=REFRESH CONTENT=0;url=admin_pro.php>';
