@@ -10,8 +10,8 @@ if($_SESSION== null)
 
 $sql = "SELECT * FROM clients ORDER BY id DESC";
 $sql_ans = "SELECT * FROM admins ORDER BY id DESC";
-$result = $con->query($sql);
-$result_ans = $con->query($sql_ans);
+$result = $con->query($sql)->fetchAll();
+$result_ans = $con->query($sql_ans)->fetchAll();
 ?>
 <head>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
@@ -27,17 +27,18 @@ $result_ans = $con->query($sql_ans);
 	</div>
     <div class="content" style="padding: 10px;">
 		<?php 
-		foreach($result as $res){
-			echo "<li>商品：".$res['product']."數量：".$res['amount']."<br>&nbsp&nbsp&nbsp&nbsp&nbsp其他：".$res['comment']."</li>";
-			foreach($result_ans as $re){
-				// if($re['client_id']==$res['id']){
-					echo "<div style='padding: 10px;'>回覆：".$re['comment']."</div>";
-				//}
+		
+		for($i=0;$i<count($result);$i++){
+			echo "<li>商品：".$result[$i]['product']."數量：".$result[$i]['amount']."<br>&nbsp&nbsp&nbsp&nbsp&nbsp其他：".$result[$i]['comment']."</li>";
+			for($j=0;$j<count($result_ans);$j++){
+				if($result_ans[$j]['client_id']==$result[$i]['id']){
+					echo "<div style='padding: 10px;'>回覆：".$result_ans[$j]['comment']."</div>";
+				}
 			}
-			
-            echo '<a href="admin_ans.php?client='.$res['id'].'">回覆</a>';
+			echo '<a href="admin_ans.php?client='.$res['id'].'">回覆</a>';
 			echo "<hr>";
 		}
+		
 		?>
     </div>
     
